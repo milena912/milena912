@@ -1,7 +1,7 @@
 ### Introduction 👋
 
-I have created a Magento module for specific task given. This module is created and works on latest Magento version 2.4.4.
-A module contains two  RESTful services (POST and GET) that store organizations with relations (parent to child relation), from given Json example.  
+I have created a Magento module for the specific task given. This module is created and works on the latest Magento version 2.4.4.
+A module contains two  RESTful services (POST and GET) that store organizations with relations (parent to child relation), from the given JSON example.  
 
 ## Usage
 
@@ -13,11 +13,9 @@ Run the following magento command:
 ```bash
 bin/magento setup:upgrade 
 ```
-I have used Postman to test my APIS.  
-
-
 # API REQUESTS
 
+I have used Postman to test my APIS.  
 
 ## Insert API 
 
@@ -186,12 +184,24 @@ Api url for get statement
 
 
 ```bash
-/rest/V1/acty/organizaton/list/$organization
+/rest/V1/acty/organizaton/list/$organization/$page
 ```
 
 Run following APi in Postman 
 
 Example:
-/rest/V1/acty/organizaton/list/Banana tree
 
-Will get 200 response with json result
+```bash
+/rest/V1/acty/organizaton/list/Banana%20tree/page/1
+```
+Expected result:
+ 
+Will get 200 response with json result.
+This api will return json result with pagination  (max 100 rows per page).
+
+If you run api with  organization name thaht not exist will get error 
+
+```bash
+"There is no results with $oganization organization name"
+```
+
