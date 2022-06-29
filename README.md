@@ -1,7 +1,7 @@
 ### Introduction 👋
 
 I have created a Magento module for the specific task given. This module is created and works on the latest Magento version 2.4.4.
-A module contains two  RESTful services (POST and GET) that store organizations with relations (parent to child relation), from the given JSON example.  
+A module contains two  RESTful services POST and GET. POST that store organizations with relations (parent to child relation), from the given JSON example and GET that list stored organization and organization relations. 
 
 ## Usage
 
