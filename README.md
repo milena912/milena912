@@ -10,6 +10,7 @@ To test this module, please install Acty_Test Module
 <b> Setup the module </b>
 
 Run the following magento command: 
+
 ```bash
 bin/magento setup:upgrade 
 ```
@@ -122,9 +123,13 @@ Use given JSON to make insert
 ```
 Expected Result 200 response code. 
 
-If you try to add deughter organization to be parent, sql error will be returned
+###ERRORS 
 
-Example to get error
+Error 1
+
+If you try to add deughter organization to be parent, sql error will be returned. 
+
+Example to get error 1
 ```json
 {
     "org_name": "Paradise Island",
@@ -137,6 +142,43 @@ Example to get error
                     "daughters": [
                         {
                             "org_name": "Yellow Banana"
+                        }
+                    ]
+                },
+                {
+                    "org_name": "Brown Banana"
+                },
+                {
+                    "org_name": "Black Banana"
+                }
+            ]
+        }
+    ]
+}
+```
+
+
+```bash
+SQLSTATE[42000]: WITH CHECK OPTION violation: 1644 Check constraint failed, same parent and child id
+```
+
+Error 2
+
+Also if you try to add child to be parent of his parent 
+
+Example to get error 2
+```json
+{
+    "org_name": "Paradise Island",
+    "daughters": [
+        {
+            "org_name": "Purple Banana",
+            "daughters": [
+                {
+                    "org_name": "Yellow Banana",
+                    "daughters": [
+                        {
+                            "org_name": "Purple Banana"
                         }
                     ]
                 },
@@ -173,11 +215,10 @@ Example to get error
     ]
 }
 ```
-
+Error 2
 ```bash
 SQLSTATE[42000]: Syntax error or access violation: 1172 Result consisted of more than one row
 ```
-
 ## Get List API 
 
 Api url for get statement
@@ -199,7 +240,9 @@ Expected result:
 Will get 200 response with json result.
 This api will return json result with pagination  (max 100 rows per page).
 
-If you run api with  organization name thaht not exist will get error 
+###ERRORS 
+
+If you run api with  organization name that not exist will get error 
 
 ```bash
 "There is no results with $oganization organization name"
